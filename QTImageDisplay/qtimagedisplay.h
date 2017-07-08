@@ -66,6 +66,8 @@ public:
 	void show_image();
 	void translate_image();
 
+	// 10:51
+
 
 private:
 	Ui::QTImageDisplayClass ui;
