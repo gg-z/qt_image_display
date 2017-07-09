@@ -22,6 +22,7 @@
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 #include "qclicklabel.hpp"
+
 QT_BEGIN_NAMESPACE
 
 class Ui_QTImageDisplayClass
@@ -49,7 +50,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label = new QClickLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(0, 0, 601, 800));
+        label->setGeometry(QRect(0, 0, 601, 791));
         QTImageDisplayClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(QTImageDisplayClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
