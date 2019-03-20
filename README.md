@@ -1,10 +1,4 @@
-### QTImageDisplay
-a vs 2015 project using qlable to display image,supporting zoom in,zoom out, and translate image. On QT 5.6.2 
-
-### Author
-If the code presented helps you, it literally is delight to me ^.^ .
-
-
+### [QT]- VS2015+QT5.6.2展示图片，支持放大、缩小、和移动图片
 
 本文主要介绍，如何使用在VS2015平台上集成QT环境实现一个控件（Widget），该控件可以展示图片，并且该支持滚动鼠标中间放大缩小图片，右键移动鼠标进行图片的拖动。本文将从以下几个部分进行描述：
 1. 将QT集成到VS2015平台
