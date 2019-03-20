@@ -17,7 +17,7 @@
 先上代码：
 
 **qclicklabel.hpp**：
-```cpp
+```c++
 #pragma once
 #include <QLabel>
 #include <QWidget>
@@ -54,7 +54,7 @@ QClickLabel继承于QLabel，该控件能够支持鼠标的点击、移动、释
 <br>
 
 **qclicklabel.cpp**：
-```cpp
+```c++
 #include "qclicklabel.hpp"
 
 // destructor
@@ -112,12 +112,12 @@ void QClickLabel::wheelEvent(QWheelEvent *event) {
  ![图 1  展示图片](http://upload-images.jianshu.io/upload_images/1769441-41ccea0d7eaae114.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <br>
-此时展示的图片的宽高就和qlabel控件的宽高一致了，所以原图片的宽高 **o_img_width、o_img_height**和qclicklabel的宽高 **show_width、show_height**会有一个比值 **ratio_o_2_show_width 、 ratio_o_2_show_height**。
-此时，图片刚刚导入展示时图片的放大的倍数-scale为1（宽高扩大的倍数相同），鼠标的中键滚动，只需要改变这个scale在大于1的一个合理的范围，然后先将图片的宽高通过QImage里面的方法转换到show_width*****scale  , show_height*****scale，然后将图片的**Rect(show_start_x，show_start_y，show_width，show_height）-起点为（show_start
-_x，show_start_y），宽高分别为show_width，show_height的长方形，此时的show_start_x，show_start_y都为0**部分展示出来既可以实现图片的放大缩小了。
+此时展示的图片的宽高就和qlabel控件的宽高一致了，所以原图片的宽高 `o_img_width、o_img_height`和qclicklabel的宽高 `show_width、show_height`会有一个比值 `ratio_o_2_show_width 、 ratio_o_2_show_height`。
+此时，图片刚刚导入展示时图片的放大的倍数-scale为1（宽高扩大的倍数相同），鼠标的中键滚动，只需要改变这个scale在大于1的一个合理的范围，然后先将图片的宽高通过QImage里面的方法转换到show_width*****scale  , show_height*****scale，然后将图片的`Rect(show_start_x，show_start_y，show_width，show_height）-起点为（show_start
+_x，show_start_y），宽高分别为show_width，show_height的长方形，此时的show_start_x，show_start_y都为0`部分展示出来既可以实现图片的放大缩小了。
 
 响应鼠标滚动事件的槽
-```cpp
+```c++
 // wheel to zoom in and zoom out
 void QTImageDisplay::slot_qclicklabel_wheel_move(QWheelEvent* evt) {
 
@@ -143,7 +143,7 @@ void QTImageDisplay::slot_qclicklabel_wheel_move(QWheelEvent* evt) {
 ```
 
 show_image()函数实现
-```cpp
+```c++
 // show front image
 void QTImageDisplay::show_image() {
 
@@ -172,10 +172,11 @@ void QTImageDisplay::show_image() {
 ```
 
 <br>
-**图片移动**：
+
+**图片移动：**
 在图片的移动过程中，需要使用到三个鼠标事件：鼠标单击事件、鼠标移动事件，鼠标释放事件。
 在鼠标单击事件当中，我们需要记录此时点击的是鼠标的左键还是右键（用两个private variable保存该状态，代码如下所示）,并且当右键点击时，需要记录此时鼠标的位置，为了后面移动图片的需求；
-```cpp
+```c++
 // used to select edge point and translate image
 void QTImageDisplay::slot_qclicklabel_mouse_press(QMouseEvent* evt) {
 
@@ -194,8 +195,8 @@ void QTImageDisplay::slot_qclicklabel_mouse_press(QMouseEvent* evt) {
 }
 ```
 
-在鼠标移动事件当中，由于我们设置的是右键单击然后移动鼠标进行图片的移动，所以在此，我们只需要处理右键被点击时的事件，此时记录鼠标移动后的所在的新的位置，然后交由translate_image()去移动图片，并且展示，该函数主要是通过鼠标的原始位置和鼠标最新位置的差值来更新 **show_start_x，show_start_y** ，并且判断此时的要展示的 **Rect(show_start_x，show_start_y，show_width，show_height）** 是否超出了边界；
-```cpp
+在鼠标移动事件当中，由于我们设置的是右键单击然后移动鼠标进行图片的移动，所以在此，我们只需要处理右键被点击时的事件，此时记录鼠标移动后的所在的新的位置，然后交由translate_image()去移动图片，并且展示，该函数主要是通过鼠标的原始位置和鼠标最新位置的差值来更新`show_start_x，show_start_y`，并且判断此时的要展示的`Rect(show_start_x，show_start_y，show_width，show_height）`是否超出了边界；
+```c++
 void QTImageDisplay::slot_qclicklabel_mouse_move(QMouseEvent* evt) {
 
 	// case 1: front image is opened;
@@ -256,7 +257,8 @@ void QTImageDisplay::translate_image() {
 }
 ```
 在鼠标释放事件当中，需要恢复记录鼠标的点击状态的两个private variable，代码如下所示：
-```cpp
+
+```c++
 //mouse wheel move event
 void QTImageDisplay::slot_qclicklabel_mouse_release(QMouseEvent* evt) {
 
@@ -269,6 +271,7 @@ void QTImageDisplay::slot_qclicklabel_mouse_release(QMouseEvent* evt) {
 	}
 }
 ```
+
 至此，图片的移动也就实现了。
 
 
@@ -280,3 +283,8 @@ void QTImageDisplay::slot_qclicklabel_mouse_release(QMouseEvent* evt) {
 
 #### 五、 总结
   本文只是展示了作者在实现展示图片控件的一个思路，但是还不够完美，比如可以多设置几种展示的方式，比如居中，适应宽度，适应高度，宽高独立放大缩小等等。不过如果你对于本文描述的实现方式能够理解，那么上述的一些功能只需要根据自己工程的需求去私人定制就好了。
+
+
+
+
+
