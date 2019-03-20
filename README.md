@@ -194,7 +194,7 @@ void QTImageDisplay::slot_qclicklabel_mouse_press(QMouseEvent* evt) {
 }
 ```
 
-在鼠标移动事件当中，由于我们设置的是右键单击然后移动鼠标进行图片的移动，所以在此，我们只需要处理右键被点击时的事件，此时记录鼠标移动后的所在的新的位置，然后交由translate_image()去移动图片，并且展示，该函数主要是通过鼠标的原始位置和鼠标最新位置的差值来更新**show_start_x，show_start_y**，并且判断此时的要展示的**Rect(show_start_x，show_start_y，show_width，show_height）** 是否超出了边界；
+在鼠标移动事件当中，由于我们设置的是右键单击然后移动鼠标进行图片的移动，所以在此，我们只需要处理右键被点击时的事件，此时记录鼠标移动后的所在的新的位置，然后交由translate_image()去移动图片，并且展示，该函数主要是通过鼠标的原始位置和鼠标最新位置的差值来更新 **show_start_x，show_start_y** ，并且判断此时的要展示的 **Rect(show_start_x，show_start_y，show_width，show_height）** 是否超出了边界；
 ```cpp
 void QTImageDisplay::slot_qclicklabel_mouse_move(QMouseEvent* evt) {
 
