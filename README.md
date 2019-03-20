@@ -112,9 +112,10 @@ void QClickLabel::wheelEvent(QWheelEvent *event) {
  ![图 1  展示图片](http://upload-images.jianshu.io/upload_images/1769441-41ccea0d7eaae114.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <br>
-此时展示的图片的宽高就和qlabel控件的宽高一致了，所以原图片的宽高 `o_img_width、o_img_height`和qclicklabel的宽高 `show_width、show_height`会有一个比值 `ratio_o_2_show_width 、 ratio_o_2_show_height`。
-此时，图片刚刚导入展示时图片的放大的倍数-scale为1（宽高扩大的倍数相同），鼠标的中键滚动，只需要改变这个scale在大于1的一个合理的范围，然后先将图片的宽高通过QImage里面的方法转换到show_width*****scale  , show_height*****scale，然后将图片的`Rect(show_start_x，show_start_y，show_width，show_height）-起点为（show_start
-_x，show_start_y），宽高分别为show_width，show_height的长方形，此时的show_start_x，show_start_y都为0`部分展示出来既可以实现图片的放大缩小了。
+
+此时展示的图片的宽高就和qlabel控件的宽高一致了，所以原图片的宽高`o_img_width,o_img_height`和qclicklabel的宽高 `show_width、show_height`会有一个比值 `ratio_o_2_show_width,ratio_o_2_show_height`。
+此时，图片刚刚导入展示时图片的放大的倍数-scale为1（宽高扩大的倍数相同），鼠标的中键滚动，只需要改变这个scale在大于1的一个合理的范围，然后先将图片的宽高通过QImage里面的方法转换到show_width*scale  , show_height*scale，然后将图片的Rect(show_start_x，show_start_y，show_width，show_height)-起点为(show_start
+_x，show_start_y)，宽高分别为show_width，show_height的长方形，此时的show_start_x，show_start_y都为0部分展示出来既可以实现图片的放大缩小了。
 
 响应鼠标滚动事件的槽
 ```c++
